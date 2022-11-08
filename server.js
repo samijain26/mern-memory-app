@@ -3,22 +3,26 @@ const app = express()
 const cors = require('cors')
 const PORT = 8000
 
+
+
+require("dotenv").config();
+const mongoConfig = require("./config");
+
 app.use(cors());
 app.use(express.json());
 
-app.get('/', (req, res) => {
-   res.status(200).json({ msg: "Hello" });  
+//available route
+const authRoutes = require("./routes/authRoutes");
+// const userRoutes = require("./routes/userRoutes");
+const memoryRoutes = require("./routes/memoryRoutes");
 
-})
+ app.use("/auth", authRoutes);
+// app.use("/users", authorize, userRoutes);
+app.use("/memory", memoryRoutes);
 
-app.post("/test", (req, res) => {
-    const obj = {
-        "name":"Sami"
-    }
-    console.log(req.body)
-  res.status(200).json({ name:obj })
-});
+
 
 app.listen(PORT, () => {
-    console.log('listening on port',PORT)
+    console.log('listening on port', PORT)
+    mongoConfig();
 })
