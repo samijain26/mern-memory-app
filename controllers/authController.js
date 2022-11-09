@@ -28,6 +28,7 @@ const register = async (req, res) => {
 
     const newUser = await User.create({
       ...req.body,
+    username:req.body.username.toLowerCase(),
       password: encryptedPassword,
     });
 
