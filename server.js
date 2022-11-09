@@ -19,7 +19,7 @@ const { authorize } = require("./middleware/authUser");
  
 app.use("/auth", authRoutes);
  app.use("/users", authorize, userRoutes);
-app.use("/memory", memoryRoutes);
+app.use("/memory",authorize, memoryRoutes);
 
 
 

@@ -19,7 +19,7 @@ const authorize = (req, res, next) => {
         req.user = payload.user
             next();
     } catch (error) {
-        res.send(401)
+        res.status(401).json({error:error.message})
   }
 }
 

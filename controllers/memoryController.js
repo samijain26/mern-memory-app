@@ -4,10 +4,11 @@ const Memory = require('../models/Memory.js')
 const getmemory = async (req, res) => {
     
     try {
-      const getmemory = await Memory.find()
-    res.status(200).json(getmemory);
-    } catch {
-        res.status(400).json({ msg: error.message }) 
+      const getmemory = await Memory.find({ user: req.user })
+      res.status(200).json(getmemory);
+      console.log(req.username);
+    } catch(error) {
+        res.status(400).json({ error: error.message }) 
   }
 };
 
