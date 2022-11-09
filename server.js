@@ -13,11 +13,12 @@ app.use(express.json());
 
 //available route
 const authRoutes = require("./routes/authRoutes");
-// const userRoutes = require("./routes/userRoutes");
+ const userRoutes = require("./routes/userRoutes");
 const memoryRoutes = require("./routes/memoryRoutes");
-
- app.use("/auth", authRoutes);
-// app.use("/users", authorize, userRoutes);
+const { authorize } = require("./middleware/authUser");
+ 
+app.use("/auth", authRoutes);
+ app.use("/users", authorize, userRoutes);
 app.use("/memory", memoryRoutes);
 
 

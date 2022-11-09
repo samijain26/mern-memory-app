@@ -9,4 +9,6 @@ router.get('/display', memCtrl.getmemory)
 
 //create memory post
 router.post('/add',memCtrl.creatememory)
+
+
 module.exports = router
