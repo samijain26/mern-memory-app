@@ -57,14 +57,17 @@ const login = async (req, res) => {
 
   try {
     const user = await User.findOne({ email: req.body.email });
+    console.log('founduser',req.body)
     if (!user) {
-      return res.status(400).json({ error: "Invalid credentials" });
+      return res.status(400).json({ error: "Invalid  user credentials" });
     }
 
     const validPassword = await bcrypt.compare(
       req.body.password,
       user.password
     );
+    console.log(req.body.password)
+      console.log("foundpass", user.password);
     if (!validPassword) {
       return res.status(400).json({ error: "Invalid  credentials" });
     }

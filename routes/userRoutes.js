@@ -9,6 +9,6 @@ router.get('/info', userCtrl.info)
 router.put('/update/:id', userCtrl.updateuser)
 
 //delete the user
-router.delete('/delete/:id',userCtrl.deleteuser,)
+router.delete('/delete/:id',userCtrl.deleteuser)
 
 module.exports = router

@@ -1,6 +1,6 @@
 const User = require('../models/User')
 
-
+const Memory = require('../models/Memory')
 const info = async (req, res) => {
 
 
@@ -56,13 +56,15 @@ const updateuser = async (req, res) => {
 //delete user
 
 const deleteuser = async (req, res) => {
-  try {
+    try {
+    
     let founduser = await User.findById(req.params.id);
     console.log("12", founduser);
     if (!founduser) {
       return res.status(404).send(" user not found");
     }
-
+      //    const getmemory = await Memory.find({ user: req.user.toLowerCase() });
+      // let memoryfound = await Memory.deleteMany({});
     founduser = await User.findByIdAndDelete(
       req.params.id,
     
