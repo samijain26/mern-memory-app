@@ -10,7 +10,7 @@ export default function Navbar({ user, setUser }) {
 
   let location = useLocation();
   useEffect(() => {
-    console.log(location);
+    
   }, [location]);
 
   if (user) {

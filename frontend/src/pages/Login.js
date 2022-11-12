@@ -40,31 +40,42 @@ function Login({ setUser }) {
   return (
     <>
       <h1>Login</h1>
+      <div>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username:</label>
-        <br />
-        <input
-          type="text"
-          id="username"
-          name="username"
-          onChange={handleChange}
-          value={form.username}
-        />
-        <br />
-        <br />
-        <label htmlFor="password">Password:</label>
-        <br />
-        <input
-          type="password"
-          id="password"
-          name="password"
-          onChange={handleChange}
-          value={form.password}
-        />
-        <br />
-        <br />
-        <button>Submit</button>
-      </form>
+          <div className="mb-3">
+            <label htmlFor="username" className="form-label">
+              UserName
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              value={form.username}
+              onChange={handleChange}
+              id="username"
+              name="username"
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="password" className="form-label">
+              Password
+            </label>
+            <input
+              type="password"
+              className="form-control"
+              value={form.password}
+              onChange={handleChange}
+              name="password"
+              id="password"
+            />
+          </div>
+
+          <button type="submit" className="btn btn-primary">
+            Submit
+          </button>
+        </form>
+      </div>
+
+      
     </>
   );
 }

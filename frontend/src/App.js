@@ -23,7 +23,7 @@ function App() {
           path="/profile"
           element={
             <Profile
-              username={user.username}
+              user={user.username}
               email={user.email}
               setUser={setUser}
             />
@@ -53,7 +53,7 @@ function App() {
   }
 
   return (
-    <div className="app">
+    <div className="container">
       <Navbar user={user.username} setUser={setUser} />
       {routes}
     </div>

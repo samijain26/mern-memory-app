@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaDelete, FaEdit } from "react-icons/fa";
 export default function UpdateUserInfo({ username, email, password, setUser }) {
     
       const navigate = useNavigate();
@@ -39,8 +40,18 @@ export default function UpdateUserInfo({ username, email, password, setUser }) {
     }
   };
 
-   const deleteUser = async () => {
-     let token = localStorage.getItem("token");
+  const deleteUser = async () => {
+     console.log('i am in delete user')
+    let token = localStorage.getItem("token");
+    
+    // const deleteall = await axios.delete(`http://localhost:8000/memory/deleteAll`,
+    // {
+    //   headers: {
+    //        Authorization: `Bearer ${token}`,
+    //      },
+
+    //   }
+    // )
      const remove = await axios.delete(
        `http://localhost:8000/users/delete`,
        {
@@ -54,26 +65,28 @@ export default function UpdateUserInfo({ username, email, password, setUser }) {
      setUser({});
      localStorage.removeItem("token");
      alert("You are successfully unsubscribed")
-     navigate("/register");
+     navigate("/");
    };
 
   return (
     <>
-      <h1>Update</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="col-lg-6 offset-lg-3" onSubmit={handleSubmit}>
+        <h2>
+          <FaEdit /> Update
+        </h2>
         <div className="mb-3">
           <label htmlFor="username" className="form-label">
-            User name
+            User name:{form.username}
           </label>
 
-          <input
+          {/* <input
             className="form-control"
             type="text"
             id="username"
             name="username"
             onChange={handleChange}
             value={form.username}
-          />
+          /> */}
         </div>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">
@@ -88,31 +101,14 @@ export default function UpdateUserInfo({ username, email, password, setUser }) {
             onChange={handleChange}
             value={form.email}
           />
+       
         </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">
-            Password
-          </label>
-          <br />
-          {/* <input
-            className="form-control"
-            type="password"
-            id="password"
-            name="password"
-            onChange={handleChange}
-            value={form.password}
-            aria-describedby="passwordHelpInline"
-          /> */}
-        </div>
-        <div id="passwordHelpBlock" className="form-text">
-          Your password must be 7-20 characters long, contain letters and must
-          not contain spaces, special characters, or emoji.
-        </div>
+        
         <button type="submit" className="btn btn-primary">
           Update
         </button>
         <button className="btn btn-primary" onClick={deleteUser}>
-          Delete
+           Delete
         </button>
       </form>
     </>

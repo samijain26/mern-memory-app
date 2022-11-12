@@ -2,7 +2,7 @@ const User = require('../models/User')
 
 const Memory = require('../models/Memory')
 const info = async (req, res) => {
-console.log("i am in info")
+
 
     try {
         const foundUser = await User.findById(req.userid)
@@ -35,9 +35,10 @@ console.log("i am in info")
 
 const updateuser = async (req, res) => {
   try {
-    console.log('i am here')
+    
+    
     let founduser = await User.findById(req.userid);
-    console.log("12", founduser);
+  
     if (!founduser) {
       return res.status(404).send(" user not found");
     }
@@ -64,9 +65,19 @@ const deleteuser = async (req, res) => {
     if (!founduser) {
       return res.status(404).send(" user not found");
     }
+      // if (founduser) {
+      //   const deletememory = await Memory.find({ user: req.user })
+       
+      // }
+      //   if (deletememory) {
+      //     const deleteAll = await Memory.deleteMany({ user: req.user })
+      //     res.status(200).json({ message: "memory deleted" });
+      //   }
+      
       //    const getmemory = await Memory.find({ user: req.user.toLowerCase() });
       // let memoryfound = await Memory.deleteMany({});
-    founduser = await User.findByIdAndDelete(
+  
+      founduser = await User.findByIdAndDelete(
       req.userid,
     
     );

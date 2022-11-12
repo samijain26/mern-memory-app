@@ -24,6 +24,7 @@ const memorySchema = new Schema({
         default: "General"
         
   },
+    
   date: {
     type: Date,
     default: Date.now,

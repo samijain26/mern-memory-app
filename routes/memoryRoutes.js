@@ -8,15 +8,17 @@ router.get('/fetchmemory', memCtrl.getmemory)
 
 
 //create memory post
-router.post('/postmemory', memCtrl.creatememory)
+router.post('/add', memCtrl.creatememory)
 
 //update existing memory
 
 router.put('/updatememory/:id', memCtrl.editmemory)
 
-//delete memory
+//delete  one memory for user
 
 router.delete('/deletememory/:id',memCtrl.removememory)
 
+//delete all memory fot the user
+// router.delete('/deleteAll,memCtrl.removeAllMemory')
 
 module.exports = router
