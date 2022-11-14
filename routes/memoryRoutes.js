@@ -19,6 +19,6 @@ router.put('/updatememory/:id', memCtrl.editmemory)
 router.delete('/deletememory/:id',memCtrl.removememory)
 
 //delete all memory fot the user
-// router.delete('/deleteAll,memCtrl.removeAllMemory')
+router.delete('/deleteAll',memCtrl.removeAllMemory)
 
 module.exports = router

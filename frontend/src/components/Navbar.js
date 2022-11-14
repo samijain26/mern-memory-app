@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useLocation } from "react-router-dom";
-import {FaSignInAlt,FaSignOutAlt,FaUser,FaEdit} from 'react-icons/fa'
+
 
 export default function Navbar({ user, setUser }) {
   const logout = () => {
@@ -82,7 +82,7 @@ export default function Navbar({ user, setUser }) {
                   className={`nav-link ${
                     location.pathname === "/logout" ? "active" : ""
                   } `}
-                  to="/logout"
+                  to="/"
                 >
                   Logout
                 </Link>

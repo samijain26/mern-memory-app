@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaSignInAlt, FaSignOutAlt, FaUser, FaEdit } from "react-icons/fa";
+import {  FaUser } from "react-icons/fa";
 function Register({ setUser }) {
   const navigate = useNavigate();
 
@@ -32,7 +32,7 @@ function Register({ setUser }) {
 
       localStorage.setItem("token", response.data.token);
       setUser(info.data);
-      navigate("/profile");
+      navigate("/memory");
     } catch (error) {
       console.log(error.response.data.error);
       alert(error.response.data.error);

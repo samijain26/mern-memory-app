@@ -70,22 +70,22 @@ const removememory = async (req, res) => {
     res.status(400).json({ error: error.meaaage });
   }
 };
-// const removeAllMemory = async (req, res) => {
-//   try {
-//     let foundmemory = await Memory.find({ user: req.user });
-//     console.log("i am in")
-//     if (!foundmemory) {
-//       return res.status(404).send(" memory not found");
-//     }
-//     // if (foundmemory.user.toLowerCase() !== req.user.toLowerCase()) {
-//     //   return res.status(401).send(" Action not allowed");
-//     // }
-//     foundmemory = await Memory.deleteMany({ user: req.user });
-//     res.status(200).json({ message: "deleted successfully" });
-//   } catch (error) {
-//     res.status(400).json({ error: error.meaaage });
-//   }
-// };
+const removeAllMemory = async (req, res) => {
+  try {
+    let foundmemory = await Memory.find({ user: req.user });
+    console.log("i am in")
+    if (!foundmemory) {
+      return res.status(404).send(" memory not found");
+    }
+    // if (foundmemory.user.toLowerCase() !== req.user.toLowerCase()) {
+    //   return res.status(401).send(" Action not allowed");
+    // }
+    foundmemory = await Memory.deleteMany({ user: req.user });
+    res.status(200).json({ message: "deleted successfully" });
+  } catch (error) {
+    res.status(400).json({ error: error.meaaage });
+  }
+};
 
 
 
@@ -94,5 +94,5 @@ module.exports = {
   creatememory,
   editmemory,
   removememory,
-  // removeAllMemory,
+  removeAllMemory,
 };

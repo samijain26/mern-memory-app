@@ -135,6 +135,7 @@ export default function Memories({ user, email, setUser }) {
 
   return (
     <div className="container my-4   ">
+      <h1>Start creating your memories which last forever</h1>
       <h2>Add a New Memory in your collection</h2>
       <form onSubmit={handleSubmit}>
         <div>
@@ -302,9 +303,9 @@ export default function Memories({ user, email, setUser }) {
               <button
                 onClick={handleClick}
                 type="button"
-                className="btn btn-primary"
+                className="btn btn-dark"
               >
-                Update Note
+                Update Memory
               </button>
             </div>
           </div>

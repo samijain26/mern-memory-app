@@ -30,7 +30,7 @@ function Login({ setUser }) {
 
       localStorage.setItem("token", response.data.token);
       setUser(info.data);
-      navigate("/memories);
+      navigate("/memory");
     } catch (error) {
       console.log(error.response.data.error);
       alert(error.response.data.error);

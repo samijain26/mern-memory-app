@@ -2,7 +2,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {  FaEdit } from "react-icons/fa";
+
 export default function Profile({ username, email, password, setUser }) {
     
       const navigate = useNavigate();
@@ -33,7 +33,7 @@ export default function Profile({ username, email, password, setUser }) {
         },
       });
 
-    //   localStorage.setItem("token", response.data.token);
+ console.log(response)
       setUser(info.data);
       navigate("/profile");
     } catch (error) {
@@ -46,14 +46,14 @@ export default function Profile({ username, email, password, setUser }) {
      console.log('i am in delete user')
     let token = localStorage.getItem("token");
     
-    // const deleteall = await axios.delete(`http://localhost:8000/memory/deleteAll`,
-    // {
-    //   headers: {
-    //        Authorization: `Bearer ${token}`,
-    //      },
+    const deleteall = await axios.delete(`http://localhost:8000/memory/deleteAll`,
+    {
+      headers: {
+           Authorization: `Bearer ${token}`,
+         },
 
-    //   }
-    // )
+      }
+    )
      const remove = await axios.delete(
        `http://localhost:8000/users/delete`,
        {
