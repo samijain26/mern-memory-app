@@ -15,6 +15,8 @@ const getmemory = async (req, res) => {
 // create a new memory
 const creatememory = async (req, res) => {
   try {
+    console.log(" hello i am in craete memory");
+    console.log(req.body)
     const postmemory = await Memory.create(req.body);
     console.log("i am in craete memory")
     res.status(200).json({ newmemory:postmemory });
@@ -28,7 +30,7 @@ const creatememory = async (req, res) => {
 const editmemory = async (req, res) => {
   try {
     let foundmemory = await Memory.findById(req.params.id);
-    console.log('12',foundmemory)
+    console.log('12I am in',foundmemory)
     if (!foundmemory) {
       return res.status(404).send(" action not found");
     }
@@ -42,7 +44,7 @@ const editmemory = async (req, res) => {
       { $set: req.body },
       { new: true }
     );
-    res.status(200).json(foundmemory);
+    res.status(200).json({ newmemory: foundmemory });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }

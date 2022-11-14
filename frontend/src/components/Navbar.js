@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link, useLocation } from "react-router-dom";
 import {FaSignInAlt,FaSignOutAlt,FaUser,FaEdit} from 'react-icons/fa'
 
@@ -9,13 +9,13 @@ export default function Navbar({ user, setUser }) {
   };
 
   let location = useLocation();
-  useEffect(() => {
+  // useEffect(() => {
     
-  }, [location]);
+  // }, [location]);
 
   if (user) {
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav className="navbar navbar-expand-lg  navbar-dark bg-dark text-body">
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
             Memory App
@@ -66,23 +66,14 @@ export default function Navbar({ user, setUser }) {
                   Profile
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link
-                  className={`nav-link ${
-                    location.pathname === "/updateInfo" ? "active" : ""
-                  } `}
-                  to="/updateInfo"
-                >
-                  UpdateInfo
-                </Link>
-              </li>
+              
               <li className="nav-item">
                 <Link
                   className={`nav-link ${
                     location.pathname === "/memory" ? "active" : ""
                   } `}
                   to="/memory"
-                ><FaEdit/>
+                >
                   Memory
                 </Link>
               </li>
@@ -122,7 +113,7 @@ export default function Navbar({ user, setUser }) {
         
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link
                   className={`nav-link ${location.pathname === "/" ? "active" : ""
                     } `}
@@ -131,7 +122,7 @@ export default function Navbar({ user, setUser }) {
                 >
                   Home
                 </Link>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <Link
                   className={`nav-link ${location.pathname === "/about" ? "active" : ""
@@ -149,7 +140,7 @@ export default function Navbar({ user, setUser }) {
                   className={`nav-link ${location.pathname === "/login" ? "active" : ""
                     } `}
                   to="/login"
-                ><FaSignInAlt/>
+                >
                   Login
                
                 </Link>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import {FaSignInAlt} from  "react-icons/fa";
 function Login({ setUser }) {
   const navigate = useNavigate();
 
@@ -30,7 +30,7 @@ function Login({ setUser }) {
 
       localStorage.setItem("token", response.data.token);
       setUser(info.data);
-      navigate("/profile");
+      navigate("/memories);
     } catch (error) {
       console.log(error.response.data.error);
       alert(error.response.data.error);
@@ -39,9 +39,11 @@ function Login({ setUser }) {
 
   return (
     <>
-      <h1>Login</h1>
       <div>
-      <form onSubmit={handleSubmit}>
+        <form className="col-lg-6 offset-lg-3" onSubmit={handleSubmit}>
+          <h3 className="mt-3">
+            <FaSignInAlt /> Login
+          </h3>
           <div className="mb-3">
             <label htmlFor="username" className="form-label">
               UserName
@@ -74,8 +76,6 @@ function Login({ setUser }) {
           </button>
         </form>
       </div>
-
-      
     </>
   );
 }

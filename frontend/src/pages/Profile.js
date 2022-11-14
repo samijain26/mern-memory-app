@@ -1,160 +1,124 @@
-import { FaSignInAlt, FaSignOutAlt, FaUser, FaEdit } from "react-icons/fa";
+
 import axios from "axios";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {  FaEdit } from "react-icons/fa";
+export default function Profile({ username, email, password, setUser }) {
+    
+      const navigate = useNavigate();
+  let [form, setForm] = useState({
+    username: username,
+    password: password,
+    email: email,
+  });
 
-import { useEffect, useRef, useState } from "react";
-import MemoryItem from "../components/MemoryItem";
-
-
-export default function Profile({ user, email }) {
- 
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
   
-
-  let [newmemory, setNewMemory] = useState([]);
-  let [DeleteMemory, setDeleteMemory] = useState([]);
-  let [updateMemory, setUpdateMemory] = useState([]);
- 
-  let imageRef = useRef();
-  let titleRef = useRef();
-  let desRef = useRef();
-  let tagRef = useRef();
-  
-   
-  
-  const getAllMemories = async (user) => {
-    let token = localStorage.getItem("token");
-   
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+      let token = localStorage.getItem("token");
+      console.log(token)
     try {
-      let response = await axios.get("http://localhost:8000/memory/fetchmemory", {
+      const response = await axios.put("http://localhost:8000/users/update",form, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-console.log('response',response.data)
-      setNewMemory(response.data.newmemory);
-
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  console.log(newmemory);
-  
-  useEffect(() => {
-    
-    getAllMemories();
-  }, []);
-
-  //Adding a new memory on submit
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    let token = localStorage.getItem("token");
-
-    let addNewMemory = {
-      user: user,
-      image: imageRef.current.value,
-      title: titleRef.current.value,
-      description: desRef.current.value,
-      tag: tagRef.current.value,
-    };
-
-    try {
-      const response = await axios.post(
-        "http://localhost:8000/memory/add",
-        addNewMemory,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      console.log('addmemory response'+response.data);
-      setNewMemory([...newmemory, response.data.newmemory]);
       
-      imageRef.current.value = "";
-      titleRef.current.value = "";
-      desRef.current.value = "";
-      tagRef.current.value = "";
+        const info = await axios.get("http://localhost:8000/users/info", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+    //   localStorage.setItem("token", response.data.token);
+      setUser(info.data);
+      navigate("/profile");
     } catch (error) {
       console.log(error);
+    //   alert(error?.response?.data?.error);
     }
   };
 
+  const deleteUser = async () => {
+     console.log('i am in delete user')
+    let token = localStorage.getItem("token");
+    
+    // const deleteall = await axios.delete(`http://localhost:8000/memory/deleteAll`,
+    // {
+    //   headers: {
+    //        Authorization: `Bearer ${token}`,
+    //      },
+
+    //   }
+    // )
+     const remove = await axios.delete(
+       `http://localhost:8000/users/delete`,
+       {
+         headers: {
+           Authorization: `Bearer ${token}`,
+         },
+       }
+     );
+    
+     //setUser(remove.data);
+     setUser({});
+     localStorage.removeItem("token");
+     alert("You are successfully unsubscribed")
+     navigate("/");
+   };
 
   return (
-    <div className="container  ">
-      <h2>Add a New Memory in your collection</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="image" className="form-label">
-            Image URL
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="image"
-            name="image"
-            ref={imageRef}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="title" className="form-label">
-            Title
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="title"
-            name="title"
-            ref={titleRef}
-            minLength={3}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="description" className="form-label">
-            Description
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="description"
-            name="description"
-            ref={desRef}
-            minLength={5}
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="tag" className="form-label">
-            Tag
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="tag"
-            name="tag"
-            ref={tagRef}
-            minLength={2}
-            required
-          />
-        </div>
+    <>
+      <div className="d-flex align-items-evenly justify-content-evenly">
+        <h1 className="mt-3">Welcome {username} </h1>
+        <h1 className="mt-3"> Your Email : {email}</h1>
 
-        <button type="submit" className="btn btn-lg btn-dark">
-          Add memory
-        </button>
-      </form>
-
-      <div className="row my-3">
-        <h2>Your memory collection</h2>
-        <div className="container mx-2">
-          {newmemory.length === 0 && "No Memories to display"}
-        </div>
-        {newmemory.map((memoryitem) => {
-          return <MemoryItem key={memoryitem._id} memories={memoryitem} />;
-        })}
+        {/* <i className="far fa-trash-alt mx-2" onClick={deleteUser}></i> */}
+        {/* <i className="far fa-edit mx-2"></i> */}
       </div>
-    </div>
-  );}
-      
+      <div>
+        <form className="col-lg-6 offset-lg-4" onSubmit={handleSubmit}>
+          <h1 className="mt-5">Update your information</h1>
+          <div className="mt-3">
+            <label htmlFor="username" className="form-label">
+              User name: {form.username.toUpperCase()}
+            </label>
+
+            {/* <input
+            className="form-control"
+            type="text"
+            id="username"
+            name="username"
+            onChange={handleChange}
+            value={form.username}
+          /> */}
+          </div>
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label">
+              Email
+            </label>
+            <br />
+            <input
+              className="form-control"
+              type="email"
+              id="email"
+              name="email"
+              onChange={handleChange}
+              value={form.email}
+            />
+          </div>
+          <i className="far fa-edit mx-2" onClick={handleSubmit}></i>
+          {/* <button type="submit" className="btn btn-primary">
+          Update
+        </button> */}
+          <i className="far fa-trash-alt mx-2" onClick={deleteUser}></i>
+        </form>
+      </div>
+    </>
+  );
+}
+
+  
