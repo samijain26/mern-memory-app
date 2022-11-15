@@ -3,6 +3,11 @@ const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
+
+const testroute = (req, res) => {
+  res.send("hello")
+}
+
 const register = async (req, res) => {
   console.log("i am in register")
   //if error then return a bad request with error message
@@ -90,4 +95,5 @@ const login = async (req, res) => {
 module.exports= {
   register,
   login,
+  testroute,
 };

@@ -8,6 +8,8 @@ const jwt = require("jsonwebtoken");
 // router.post('/login', authCtrl.login)
 // router.post('/register', authCtrl.register)
 
+router.get('/test',authCtrl.testroute)
+
 router.post(
   "/register",
   
