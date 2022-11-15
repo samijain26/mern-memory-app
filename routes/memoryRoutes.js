@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 
-memCtrl = require('../controllers/memoryController.js')
+const memCtrl = require('../controllers/memoryController.js')
 
 //get memory post
 router.get('/fetchmemory', memCtrl.getmemory)
