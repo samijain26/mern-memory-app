@@ -1,4 +1,5 @@
 import axios from "axios";
+import baseURL from "./baseURL";
 
 const getToken = () => {
   let token = localStorage.getItem("token");
@@ -6,12 +7,19 @@ const getToken = () => {
 };
 
 const axiosUser = () =>
-  axios.create({
-    baseURL: "http://localhost:8000/users",
-    headers: {
-      Authorization: `Bearer ${getToken()}`,
-    },
-  });
+//   axios.create({
+//     baseURL: "http://localhost:8000/users",
+//     headers: {
+//       Authorization: `Bearer ${getToken()}`,
+//     },
+//   });
+ axios.create({
+   baseURL: baseURL + "/users",
+   headers: {
+     Authorization: `Bearer ${getToken()}`,
+   },
+ });
+
 
 const info = () => {
   return axiosUser().get("/info");

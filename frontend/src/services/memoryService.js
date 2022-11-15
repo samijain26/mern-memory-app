@@ -1,17 +1,25 @@
 import axios from 'axios'
+import baseURL from './baseURL'
 
 const getToken = () => {
     let token = localStorage.getItem("token")
     return token ? token : ''
 }
 
-const axiosMemories = () => axios.create({
-    baseURL: 'http://localhost:8000/memory',
-    headers: {
-        'Authorization': `Bearer ${getToken()}`
-    }
-})
+// const axiosMemories = () => axios.create({
+//     baseURL: 'http://localhost:8000/memory',
+//     headers: {
+//         'Authorization': `Bearer ${getToken()}`
+//     }
+// })
 
+const axiosMemories = () =>
+  axios.create({
+    baseURL: baseURL + "/memory",
+    headers: {
+      Authorization: `Bearer ${getToken()}`,
+    },
+  });
 
 //getting all memory for user
 const fetchmemory = () => {
