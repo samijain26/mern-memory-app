@@ -102,10 +102,13 @@ let loggedIn = user.username;
     }
   }
   return (
-    <div className="container">
-      <Navbar user={user.username} setUser={setUser} />
-      {routes}
-    </div>
+    <>
+      <div className="container ">
+        <Navbar user={user.username} setUser={setUser} />
+        {routes}
+      </div>
+    
+    </>
   );
 }
 

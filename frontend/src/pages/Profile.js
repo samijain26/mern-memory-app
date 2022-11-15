@@ -72,19 +72,20 @@ export default function Profile({ username, email, password, setUser }) {
 
   return (
     <>
-      <div className="d-flex align-items-evenly justify-content-evenly">
-        <h1 className="mt-3">Welcome {username} </h1>
-        <h1 className="mt-3"> Your Email : {email}</h1>
-
+      <div className="d-flex align-items-evenly justify-content-center">
+        <div>
+          <h1 className="mt-3">Welcome {username.toUpperCase()} </h1>
+          <h2 className="mt-3"> Your Email : {email}</h2>
+        </div>
         {/* <i className="far fa-trash-alt mx-2" onClick={deleteUser}></i> */}
         {/* <i className="far fa-edit mx-2"></i> */}
       </div>
-      <div>
-        <form className="col-lg-6 offset-lg-4" onSubmit={handleSubmit}>
-          <h1 className="mt-5">Update your information</h1>
-          <div className="mt-3">
+      <div className="d-flex align-items-evenly justify-content-center">
+        <form className="col-lg-6 offset-lg-0" onSubmit={handleSubmit}>
+          <h1 className="mt-3">Update your information</h1>
+          <div className="mt-3 ">
             <label htmlFor="username" className="form-label">
-              User name: {form.username.toUpperCase()}
+              <h2> User name: {form.username.toUpperCase()}</h2>
             </label>
 
             {/* <input
@@ -96,9 +97,9 @@ export default function Profile({ username, email, password, setUser }) {
             value={form.username}
           /> */}
           </div>
-          <div className="mb-3">
+          <div className="mt-3 border border-success mb-4 px-4 py-4">
             <label htmlFor="email" className="form-label">
-              Email
+              <h2> Email</h2>
             </label>
             <br />
             <input
@@ -109,12 +110,13 @@ export default function Profile({ username, email, password, setUser }) {
               onChange={handleChange}
               value={form.email}
             />
-          </div>
+            <br />
+          </div  >
+          <div className="d-flex align-items-evenly justify-content-center">
           <i className="far fa-edit mx-2" onClick={handleSubmit}></i>
-          {/* <button type="submit" className="btn btn-primary">
-          Update
-        </button> */}
-          <i className="far fa-trash-alt mx-2" onClick={deleteUser}></i>
+        
+            <i className="far fa-trash-alt mx-2" onClick={deleteUser}></i>
+            </div>
         </form>
       </div>
     </>

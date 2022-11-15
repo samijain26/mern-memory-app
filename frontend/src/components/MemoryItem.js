@@ -6,16 +6,19 @@ export default function MemoryItem({ memories, deleteMemory, updateCurrentmemory
       <div className="card my-3">
         <div className="card-body">
           <div>
-            <img className="card-img-top" src={memories.image}  alt="love"/>
+            <img className="card-img-top" src={memories.image} alt="love" />
           </div>
           <div className="d-flex align-items-left mt-3">
-            <h5 className="card-title"> Title: {memories.title}</h5>
+            <h4 className="card-title-info"> Title: </h4>
+            <p> {memories.title}</p>
           </div>
           <div>
-            <p className="card-text text-info"> Description: {memories.description}</p>
+            <h4 className="card-title-info "> Description: </h4>
+            <p>{memories.description}</p>
           </div>
-          <div>
-            <p className="card-text"> Tag: {memories.tag}</p>
+          <div className="d-flex align-items-left mt-3">
+            <h4 className="card-text"> Tag: </h4>
+            <p>{memories.tag}</p>
           </div>
           <div>
             <i

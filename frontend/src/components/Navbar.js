@@ -15,11 +15,16 @@ export default function Navbar({ user, setUser }) {
 
   if (user) {
     return (
-      <nav className="navbar navbar-expand-lg  navbar-dark bg-dark text-body">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="/">
-            Memory App
-          </a>
+      <nav
+        className="navbar navbar-expand-lg  navbar-dark  text-body"
+        style={{ backgroundColor: "rgb(109, 5, 29" }}
+      >
+        <div className="container-fluid ">
+          
+            <a className="navbar-brand" href="/">
+              Memory App
+            </a>
+        
           <button
             className="navbar-toggler"
             type="button"
@@ -45,17 +50,7 @@ export default function Navbar({ user, setUser }) {
                   Home
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link
-                  className={`nav-link ${
-                    location.pathname === "/about" ? "active" : ""
-                  } `}
-                  aria-current="page"
-                  to="/about"
-                >
-                  About
-                </Link>
-              </li>
+
               <li className="nav-item">
                 <Link
                   className={`nav-link ${
@@ -66,7 +61,7 @@ export default function Navbar({ user, setUser }) {
                   Profile
                 </Link>
               </li>
-              
+
               <li className="nav-item">
                 <Link
                   className={`nav-link ${
@@ -94,7 +89,10 @@ export default function Navbar({ user, setUser }) {
     );
   } else {
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav
+        className="navbar navbar-expand-lg navbar-dark "
+        style={{ backgroundColor: "rgb(109, 5, 29" }}
+      >
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
             Memory App
@@ -110,7 +108,7 @@ export default function Navbar({ user, setUser }) {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-        
+
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               {/* <li className="nav-item">
@@ -123,44 +121,29 @@ export default function Navbar({ user, setUser }) {
                   Home
                 </Link>
               </li> */}
+              
+
               <li className="nav-item">
                 <Link
-                  className={`nav-link ${location.pathname === "/about" ? "active" : ""
-                    } `}
-                  aria-current="page"
-                  to="/about"
-                >
-                  About
-                </Link>
-              </li>
-    
-            
-              <li className="nav-item">
-                <Link
-                  className={`nav-link ${location.pathname === "/login" ? "active" : ""
-                    } `}
+                  className={`nav-link ${
+                    location.pathname === "/login" ? "active" : ""
+                  } `}
                   to="/login"
                 >
                   Login
-               
                 </Link>
-
               </li>
               <li className="nav-item">
                 <Link
-                  className={`nav-link ${location.pathname === "/register" ? "active" : ""
-                    } `}
+                  className={`nav-link ${
+                    location.pathname === "/register" ? "active" : ""
+                  } `}
                   to="/register"
                 >
                   Register
-               
                 </Link>
-
               </li>
-            
-                    
             </ul>
-         
           </div>
         </div>
       </nav>

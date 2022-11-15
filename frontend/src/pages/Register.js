@@ -41,11 +41,11 @@ function Register({ setUser }) {
 
   return (
     <>
-      <form className="col-lg-6 offset-lg-3" onSubmit={handleSubmit}>
-        <h2 className="pt-3 row justify-content-center">
+      <form className="col-lg-6 offset-lg-3 " onSubmit={handleSubmit}>
+        <h1 className="pt-3 mt-4 row justify-content-center">
           <FaUser />
           Register
-        </h2>
+        </h1>
         <div className="form-group mb-3">
           <label htmlFor="username" className="form-label">
             User name
@@ -93,10 +93,15 @@ function Register({ setUser }) {
           Your password must be 7-20 characters long, contain letters and must
           not contain spaces, special characters, or emoji.
         </div>
-        <div className="pt-3"></div>
-        <button type="submit" className="btn btn-dark">
-          Submit
-        </button>
+        <div className=" d-flex justify-content-center mt-3">
+          <button
+            type="submit"
+            className="btn btn-dark d-flex justify-content-center"
+            style={{ backgroundColor: "rgb(109, 5, 29" }}
+          >
+            Sign Up
+          </button>
+        </div>
       </form>
     </>
   );

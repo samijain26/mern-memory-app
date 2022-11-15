@@ -41,9 +41,9 @@ function Login({ setUser }) {
     <>
       <div>
         <form className="col-lg-6 offset-lg-3" onSubmit={handleSubmit}>
-          <h3 className="mt-3">
+          <h1 className="pt-3 mt-4 row justify-content-center">
             <FaSignInAlt /> Login
-          </h3>
+          </h1>
           <div className="mb-3">
             <label htmlFor="username" className="form-label">
               UserName
@@ -70,10 +70,15 @@ function Login({ setUser }) {
               id="password"
             />
           </div>
-
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
+          <div className=" d-flex justify-content-center">
+            <button
+              type="submit"
+              className=" d-flex justify-content-center btn btn-dark mt-3"
+              style={{ backgroundColor: "rgb(109, 5, 29" }}
+            >
+              Sign In
+            </button>
+          </div>
         </form>
       </div>
     </>
