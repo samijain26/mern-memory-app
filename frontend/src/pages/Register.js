@@ -1,7 +1,10 @@
-import axios from "axios";
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {  FaUser } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
+import authService from "../services/authService";
+import userService from "../services/userService";
+
 function Register({ setUser }) {
   const navigate = useNavigate();
 
@@ -19,22 +22,29 @@ function Register({ setUser }) {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        "http://localhost:8000/auth/register",
-        form
-      );
-      const info = await axios.get(
-        "http://localhost:8000/users/info" ,{
-        headers: {
-          Authorization: `Bearer ${response.data.token}`,
-        },
-      });
+      // const response = await axios.post(
+      //   "http://localhost:8000/auth/register",
+      //   form
+      // );
 
-      localStorage.setItem("token", response.data.token);
+       const response = await authService.register(form);
+        console.log(response)
+       localStorage.setItem("token", response.data.token);
+      
+      const info = await userService.info();
+      
+      // const info = await axios.get(
+      //   "http://localhost:8000/users/info" ,{
+      //   headers: {
+      //     Authorization: `Bearer ${response.data.token}`,
+      //   },
+      // });
+
+     
       setUser(info.data);
       navigate("/memory");
     } catch (error) {
-      console.log(error.response.data.error);
+      console.log(error.response.data);
       alert(error.response.data.error);
     }
   };

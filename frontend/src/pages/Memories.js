@@ -1,8 +1,12 @@
-import axios from "axios";
+
 import { useEffect, useRef, useState } from "react";
 import MemoryItem from "../components/MemoryItem";
 
+import memoryService from "../services/memoryService";
+
+
 export default function Memories({ user, email, setUser }) {
+  
   let [newmemory, setNewMemory] = useState([]); //add a new memory
   let [DeleteMemory, setDeleteMemory] = useState([]); //delete a memory
   let [form, setForm] = useState({}); //update a movies
@@ -13,18 +17,22 @@ export default function Memories({ user, email, setUser }) {
   let tagRef = useRef();
 
   const getAllMemories = async (user) => {
-    let token = localStorage.getItem("token");
+    // let token = localStorage.getItem("token");
 
     try {
-      let response = await axios.get(
-        "http://localhost:8000/memory/fetchmemory",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      // let response = await axios.get(
+      //   "http://localhost:8000/memory/fetchmemory",
+      //   {
+      //     headers: {
+      //       Authorization: `Bearer ${token}`,
+      //     },
+      //   }
+      // );
       //console.log('response',response.data)
+
+
+       const response = await memoryService.fetchmemory();
+      
       setNewMemory(response.data.newmemory);
     } catch (error) {
       console.log(error);
@@ -41,9 +49,8 @@ export default function Memories({ user, email, setUser }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    let token = localStorage.getItem("token");
-    console.log(token);
-    console.log("i am in add",user);
+    // let token = localStorage.getItem("token");
+   
     let addNewMemory = {
       user,
       image: imageRef.current.value,
@@ -51,17 +58,19 @@ export default function Memories({ user, email, setUser }) {
       description: desRef.current.value,
       tag: tagRef.current.value,
     };
-    console.log("add", addNewMemory);
+   
     try {
-      const response1 = await axios.post(
-        "http://localhost:8000/memory/add",
-        addNewMemory,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      // const response1 = await axios.post(
+      //   "http://localhost:8000/memory/add",
+      //   addNewMemory,
+      //   {
+      //     headers: {
+      //       Authorization: `Bearer ${token}`,
+      //     },
+      //   }
+      // );
+     
+    const response1 =  await memoryService.add(addNewMemory);
 
       console.log("addmemory response", response1.data);
       setNewMemory([...newmemory, response1.data.newmemory]);
@@ -78,16 +87,22 @@ export default function Memories({ user, email, setUser }) {
   //deleting a selected memory with the id
 
   const deleteItem = async (id) => {
-    let token = localStorage.getItem("token");
-    const remove = await axios.delete(
-      `http://localhost:8000/memory/deletememory/${id}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    // let token = localStorage.getItem("token");
+    // const remove = await axios.delete(
+    //   `http://localhost:8000/memory/deletememory/${id}`,
+    //   {
+    //     headers: {
+    //       Authorization: `Bearer ${token}`,
+    //     },
+    //   }
+    // );
+    
+
+    const remove = await memoryService.deletememory(id)
+
+
     console.log("2", remove.data.newmemory);
+    
     setDeleteMemory([...newmemory]);
   };
 
@@ -116,18 +131,22 @@ export default function Memories({ user, email, setUser }) {
   };
 
   const handleClick = async (e, id) => {
-    let token = localStorage.getItem("token");
-    console.log("i am clicked", form.id);
-    console.log(token);
-    const response = await axios.put(
-      `http://localhost:8000/memory/updatememory/${form.id}`,
-      form,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    // let token = localStorage.getItem("token");
+    // console.log("i am clicked", form.id);
+    // console.log(token);
+    // const response = await axios.put(
+    //   `http://localhost:8000/memory/updatememory/${form.id}`,
+    //   form,
+    //   {
+    //     headers: {
+    //       Authorization: `Bearer ${token}`,
+    //     },
+    //   }
+    // );
+
+const response = await memoryService.updatememory(form)
+
+
     console.log(response.data);
     setForm([response.data.newmemory]);
     refClose.current.click();

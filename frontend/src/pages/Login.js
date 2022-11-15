@@ -1,7 +1,10 @@
 import { useState } from "react";
-import axios from "axios";
+
 import { useNavigate } from "react-router-dom";
-import {FaSignInAlt} from  "react-icons/fa";
+import { FaSignInAlt } from "react-icons/fa";
+import authService from "../services/authService"
+import userService from "../services/userService"
+
 function Login({ setUser }) {
   const navigate = useNavigate();
 
@@ -18,17 +21,23 @@ function Login({ setUser }) {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        "http://localhost:8000/auth/login",
-        form
-      );
-      const info = await axios.get("http://localhost:8000/users/info", {
-        headers: {
-          Authorization: `Bearer ${response.data.token}`,
-        },
-      });
+      // const response = await axios.post(
+      //   "http://localhost:8000/auth/login",
+      //   form
+      // );
 
+      const response = await authService.login(form);
       localStorage.setItem("token", response.data.token);
+      
+      const info = await userService.info();
+
+      // const info = await axios.get("http://localhost:8000/users/info", {
+      //   headers: {
+      //     Authorization: `Bearer ${response.data.token}`,
+      //   },
+      // });
+
+     
       setUser(info.data);
       navigate("/memory");
     } catch (error) {

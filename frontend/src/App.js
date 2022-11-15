@@ -10,7 +10,7 @@ import Profile from "./pages/Profile";
 import Register from "./pages/Register";
 
 import Memories from "./pages/Memories";
-import axios from "axios";
+import userService from "./services/userService";
 
 
 let initialRender = true;
@@ -21,14 +21,18 @@ function App() {
   
    const currentUserInfo = async (token) => {
      try {
-       const info = await axios.get("http://localhost:8000/users/info", {
-         headers: {
-           Authorization: `Bearer ${token}`,
-         },
-       });
-       console.log(info);
+      //  const info = await axios.get("http://localhost:8000/users/info", {
+      //    headers: {
+      //      Authorization: `Bearer ${token}`,
+      //    },
+      //  });
+      //  console.log(info);
+       
+      const info = await userService.info();
+       
        const { username, email } = info.data;
        setUser({ username, email });
+     
      } catch (error) {
        let message = error.response.data.error;
 

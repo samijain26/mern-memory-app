@@ -1,7 +1,9 @@
 
-import axios from "axios";
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import userService from "../services/userService"
+import memoryService from "../services/memoryService"
 
 export default function Profile({ username, email, password, setUser }) {
     
@@ -17,23 +19,27 @@ export default function Profile({ username, email, password, setUser }) {
   };
   
   const handleSubmit = async (e) => {
-    e.preventDefault();
-      let token = localStorage.getItem("token");
-      console.log(token)
+        e.preventDefault();
+      //let token = localStorage.getItem("token");
+     
     try {
-      const response = await axios.put("http://localhost:8000/users/update",form, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      
-        const info = await axios.get("http://localhost:8000/users/info", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
 
- console.log(response)
+
+      // const response = await axios.put("http://localhost:8000/users/update",form, {
+      //   headers: {
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      // });
+      const response= await userService.update(form)
+      //   const info = await axios.get("http://localhost:8000/users/info", {
+      //   headers: {
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      // });
+
+     const info =await userService.info()
+
+     console.log(response)
       setUser(info.data);
       navigate("/profile");
     } catch (error) {
@@ -42,33 +48,43 @@ export default function Profile({ username, email, password, setUser }) {
     }
   };
 
-  const deleteUser = async () => {
-     console.log('i am in delete user')
-    let token = localStorage.getItem("token");
-    
-    const deleteall = await axios.delete(`http://localhost:8000/memory/deleteAll`,
-    {
-      headers: {
-           Authorization: `Bearer ${token}`,
-         },
 
-      }
-    )
-     const remove = await axios.delete(
-       `http://localhost:8000/users/delete`,
-       {
-         headers: {
-           Authorization: `Bearer ${token}`,
-         },
-       }
-     );
+
+
+
+  const deleteUser = async () => {
+     
+    // let token = localStorage.getItem("token");
     
-     //setUser(remove.data);
-     setUser({});
+    // const deleteall = await axios.delete(`http://localhost:8000/memory/deleteAll`,
+    // {
+    //   headers: {
+    //        Authorization: `Bearer ${token}`,
+    //      },
+
+    //   }
+    // )
+
+    //memoryService.add()
+     const deleteall = await memoryService.deleteAll()
+      // console.log('Deleting all memory for user',deleteall)
+
+    //  const remove = await axios.delete(
+    //    `http://localhost:8000/users/delete`,
+    //    {
+    //      headers: {
+    //        Authorization: `Bearer ${token}`,
+    //      },
+    //    }
+    //  );
+
+    const remove = await userService.deleteUser()
+    
+    console.log('remove user',remove)
+     
+    setUser({});
     localStorage.removeItem("token");
-    <div class="alert alert-success" role="alert">
-      A simple success alert—check it out!
-    </div>;
+    
     //  alert("You are successfully unsubscribed")
      navigate("/");
    };
