@@ -6,6 +6,8 @@ memCtrl = require('../controllers/memoryController.js')
 //get memory post
 router.get('/fetchmemory', memCtrl.getmemory)
 
+//get specific memory based on tag search 
+//router.get('/search', memCtrl.searchmemory)
 
 //create memory post
 router.post('/add', memCtrl.creatememory)

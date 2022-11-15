@@ -12,6 +12,9 @@ const getmemory = async (req, res) => {
   }
 };
 
+//search memory for a user 
+
+
 // create a new memory
 const creatememory = async (req, res) => {
   try {

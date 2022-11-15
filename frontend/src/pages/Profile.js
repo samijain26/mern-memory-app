@@ -65,8 +65,11 @@ export default function Profile({ username, email, password, setUser }) {
     
      //setUser(remove.data);
      setUser({});
-     localStorage.removeItem("token");
-     alert("You are successfully unsubscribed")
+    localStorage.removeItem("token");
+    <div class="alert alert-success" role="alert">
+      A simple success alert—check it out!
+    </div>;
+    //  alert("You are successfully unsubscribed")
      navigate("/");
    };
 
@@ -75,7 +78,7 @@ export default function Profile({ username, email, password, setUser }) {
       <div className="d-flex align-items-evenly justify-content-center">
         <div>
           <h1 className="mt-3">Welcome {username.toUpperCase()} </h1>
-          <h2 className="mt-3"> Your Email : {email}</h2>
+          <h3 className="mt-3"> Your Email : {email}</h3>
         </div>
         {/* <i className="far fa-trash-alt mx-2" onClick={deleteUser}></i> */}
         {/* <i className="far fa-edit mx-2"></i> */}
@@ -83,9 +86,10 @@ export default function Profile({ username, email, password, setUser }) {
       <div className="d-flex align-items-evenly justify-content-center">
         <form className="col-lg-6 offset-lg-0" onSubmit={handleSubmit}>
           <h1 className="mt-3">Update your information</h1>
-          <div className="mt-3 ">
+          <div className="mt-3 d-flex align-items-evenly justify-content-center">
             <label htmlFor="username" className="form-label">
-              <h2> User name: {form.username.toUpperCase()}</h2>
+              <h3 className="d-flex align-items-evenly justify-content-center">
+                User name: {form.username.toUpperCase()}</h3>
             </label>
 
             {/* <input
@@ -97,7 +101,7 @@ export default function Profile({ username, email, password, setUser }) {
             value={form.username}
           /> */}
           </div>
-          <div className="mt-3 border border-success mb-4 px-4 py-4">
+          <div className="mt-3 border border-success  mb-4 px-4 py-4">
             <label htmlFor="email" className="form-label">
               <h2> Email</h2>
             </label>
