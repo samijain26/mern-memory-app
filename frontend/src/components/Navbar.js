@@ -16,15 +16,14 @@ export default function Navbar({ user, setUser }) {
   if (user) {
     return (
       <nav
-        className="navbar navbar-expand-lg  navbar-dark  text-body"
+        className="navbar navbar-fixed-top navbar-expand navbar-dark  text-body"
         style={{ backgroundColor: "rgb(109, 5, 29" }}
       >
         <div className="container-fluid ">
-          
-            <a className="navbar-brand" href="/">
-              Memory App
-            </a>
-        
+          <a className="navbar-brand" href="/">
+            Memory App
+          </a>
+
           <button
             className="navbar-toggler"
             type="button"

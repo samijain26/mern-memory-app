@@ -22,7 +22,7 @@ const register = async (req, res) => {
     if (founduser) {
       return res
         .status(400)
-        .json({ msg: "user with this email already exist" });
+        .json({ msg: "user with this username already exist" });
     }
 
     // 2. If they don't exist, encrypt their password

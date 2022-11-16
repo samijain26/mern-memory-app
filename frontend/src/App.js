@@ -10,7 +10,7 @@ import Profile from "./pages/Profile";
 import Register from "./pages/Register";
 
 import Memories from "./pages/Memories";
-import userService from "./services/userService";
+import userService from './services/userService'
 
 
 let initialRender = true;

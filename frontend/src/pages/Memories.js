@@ -192,7 +192,7 @@ const response = await memoryService.updatememory(form)
           </div>
           <div>
             <label htmlFor="description" className="form-label">
-              <h4 className="mt-2">DescriptionL</h4>
+              <h4 className="mt-2">Description</h4>
             </label>
             <input
               type="text"

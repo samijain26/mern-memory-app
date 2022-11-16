@@ -44,8 +44,8 @@ function Register({ setUser }) {
       setUser(info.data);
       navigate("/memory");
     } catch (error) {
-      console.log(error.response.data);
-      alert(error.response.data.error);
+     
+      alert("username exists");
     }
   };
 

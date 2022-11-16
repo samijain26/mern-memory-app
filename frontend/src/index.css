@@ -15,23 +15,25 @@ i {
   cursor: pointer;
 }
  body {
-  background-image: radial-gradient(rgb(227, 130, 130), rgb(144, 209, 144), rgb(91, 91, 209));
-  background-color: rgb(37, 228, 228);
+  /* background-image: radial-gradient(rgb(227, 130, 130), rgb(144, 209, 144), rgb(91, 91, 209)); */
+  background-color: rgb(191, 226, 226);
    font-family: 'Merienda';
-   font-size: 22px;
+   font-size: 20px;
    color: rgb(2, 22, 6);
  }
 .app{
   background-image: radial-gradient(red, green, blue);
 }
  
- h1{color:rgb(109, 5, 29)}
+ h1{color:rgb(109, 5, 29);
+  margin:20px;
+font-size:35px}
  h2{
-    color: rgb(103, 15, 15)
+    color: rgb(166, 25, 25))
   }
  h3{color:rgb(166, 25, 25)}
  h4 {
    color: rgb(103, 15, 15)
  }
  label{color:rgb(103, 15, 15);
-font-size:30px}
+font-size:25px}

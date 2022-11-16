@@ -9,9 +9,9 @@ export default function Home() {
           className="card-header d-flex justify-content-center "
           style={{ maxwidth: "25rem" }}
         >
-          <figure className="text-center  p-4 fs-2">
+          <figure className="text-center  p-4 fs-3">
             <blockquote className="blockquote fs-4  ">
-              <h1 className="card-title display-1 text-center mt-2 p-3  ">
+              <h1 className="card-title display-4 text-center mt-2 p-3  ">
                 Welcome to Memory app
               </h1>
               <p className="fst-italic mt-2">
