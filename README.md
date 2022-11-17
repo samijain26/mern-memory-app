@@ -1,63 +1,80 @@
-# Getting Started with Create React App
+#
 # MERN-Memory App 
-## MERN memory App is the cloud storage where User can create, show, update and delete his memories from the past and dreams for the future. Simply sign up an account today and start building your lifetime treasure.
+## MERN memory App is the cloud storage where User can create, show, update and delete his memories.  Simply sign up an account today and start building your lifetime treasure. 
+
+# LiveSite 
+
+## Mern memory app is live at 
+ 
+ https://mern-memory-app.netlify.app
+
+## source code is available on GIT HUB at
+
+https://github.com/samijain26/mern-memory-app 
+
+
 
 # Technologies Used
-### React,Express,Node JS,JavaScript,BootStrap,CSS and MongoDb Database
+#### React
+#### Express
+#### Node.JS
+ #### JavaScript
+#### BootStrap
+#### CSS 
+#### MongoDb Database
 
 # Installation 
-First run create-react-app from the terminal to create an app in the desired local directory. Then 
+ 
+ ## first create an react app by running following command
+ ### npx create-react-app mern-app
+
+# Front end Installation
+#### npm i react-router-dom
+#### npm i react-icons
+#### npm i axios
+#### npm i react-toastify
+
+# Backend Installation
+
+#### npm i  express
+#### npm i cors
+#### npm i dotenv
+#### npm i express-validator
+ #### npm i jsonwebtoken #### npm ibcrypt
+ #### npm i mongoose 
+ #### npm i concurrently
+
+ ## you can run frontend by using 
+ ### npm start frontend
+ 
+ ## Run backend by using
+ ### nodemon server
+
+## or you can run frontend and backend together by using
+ ### npm run dev
+
+ ## This app used bootstrap CSS to make responsive style on all medias.
+
+ ## App follows MVC structure on the backend
+
+ # Challenges
+ ## deleted user  with deleting all related memories from different schema
+ ## creating a modal for update memory
+
+ # Future implementation
+### creating a serch route
+### use of redux to manage state variables
+
+# Licence
+### MIT
+
+
+
+
+ 
 
 
 
 
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

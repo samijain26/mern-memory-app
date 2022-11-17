@@ -18,6 +18,8 @@ export default function Profile({ username, email, password, setUser }) {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
   
+  
+  //update user info
   const handleSubmit = async (e) => {
         e.preventDefault();
       //let token = localStorage.getItem("token");
@@ -124,6 +126,8 @@ export default function Profile({ username, email, password, setUser }) {
             value={form.username}
           /> */}
           </div>
+
+          
           <div className="mt-2  ">
             <label htmlFor="email" className="form-label">
               <h4> Email</h4>
