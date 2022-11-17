@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
@@ -13,11 +14,16 @@ import Memories from "./pages/Memories";
 import userService from './services/userService'
 
 
+
 let initialRender = true;
 
 function App() {
  const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+
+    
+   
+  
   
    const currentUserInfo = async (token) => {
      try {
@@ -99,7 +105,10 @@ let loggedIn = user.username;
       routes = (
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login setUser={setUser} />} />
+          <Route
+            path="/login"
+            element={<Login setUser={setUser}  />}
+          />
           <Route path="/register" element={<Register setUser={setUser} />} />
         </Routes>
       );
@@ -109,9 +118,10 @@ let loggedIn = user.username;
     <>
       <div className="container ">
         <Navbar user={user.username} setUser={setUser} />
+
         {routes}
       </div>
-    
+      <ToastContainer  />
     </>
   );
 }

@@ -16,7 +16,7 @@ export default function Navbar({ user, setUser }) {
   if (user) {
     return (
       <nav
-        className="navbar navbar-fixed-top navbar-expand navbar-dark  text-body"
+        className="navbar fixed-top navbar-expand-lg navbar-dark  text-body"
         style={{ backgroundColor: "rgb(109, 5, 29" }}
       >
         <div className="container-fluid ">
@@ -89,7 +89,7 @@ export default function Navbar({ user, setUser }) {
   } else {
     return (
       <nav
-        className="navbar navbar-expand-lg navbar-dark "
+        className="navbar fixed-top navbar-expand-lg navbar-dark "
         style={{ backgroundColor: "rgb(109, 5, 29" }}
       >
         <div className="container-fluid">
@@ -120,7 +120,6 @@ export default function Navbar({ user, setUser }) {
                   Home
                 </Link>
               </li> */}
-              
 
               <li className="nav-item">
                 <Link

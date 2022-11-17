@@ -1,5 +1,6 @@
 
 import { useEffect, useRef, useState } from "react";
+import { toast } from "react-toastify";
 import MemoryItem from "../components/MemoryItem";
 
 import memoryService from "../services/memoryService";
@@ -34,8 +35,9 @@ export default function Memories({ user, email, setUser }) {
        const response = await memoryService.fetchmemory();
       
       setNewMemory(response.data.newmemory);
+     
     } catch (error) {
-      console.log(error);
+       toast(" incurred a error", { autoClose: 1000 });
     }
   };
 
@@ -73,6 +75,9 @@ export default function Memories({ user, email, setUser }) {
     const response1 =  await memoryService.add(addNewMemory);
 
       console.log("addmemory response", response1.data);
+     
+        toast(" memory successfully added", { autoClose: 1000 });
+        
       setNewMemory([...newmemory, response1.data.newmemory]);
 
       imageRef.current.value = "";
@@ -104,6 +109,7 @@ export default function Memories({ user, email, setUser }) {
     console.log("2", remove.data.newmemory);
     
     setDeleteMemory([...newmemory]);
+    toast(" memory successfully deleted", { autoClose: 1500 });
   };
 
   //update a memory
@@ -149,23 +155,25 @@ const response = await memoryService.updatememory(form)
 
     console.log(response.data);
     setForm([response.data.newmemory]);
+    toast.info(" memory successfully updated", { autoClose: 1000 });
     refClose.current.click();
   };
 
   return (
-    <div className="container my-4  ">
-      <h1 className="d-flex justify-content-center">
+    <div className="container mt-1  ">
+    <br/>
+      <h2 className="d-flex justify-content-center mt-5">
         Start creating your memories which last forever
-      </h1>
-      <h3 className="mt-4 d-flex justify-content-center">
+      </h2>
+      <h3 className="mt-1 d-flex justify-content-center">
         Add a New Memory in your collection
       </h3>
-      <div className='col-lg-6 offset-lg-3'>
+      <div className='col-lg-8 offset-lg-2'>
         <form onSubmit={handleSubmit}>
           <div>
             {form.id}
             <label htmlFor="image" className="form-label">
-              <h4 className="mt-2">Image URL</h4>
+              <h4 className="mt-1">Image URL</h4>
             </label>
             <input
               type="text"
@@ -178,9 +186,9 @@ const response = await memoryService.updatememory(form)
           </div>
           <div>
             <label htmlFor="title" className="form-label">
-              <h4 className="mt-2">Title</h4>
+              <h4 className="mt-1">Title</h4>
             </label>
-            <input
+            <input 
               type="text"
               className="form-control"
               id="title"
@@ -192,7 +200,7 @@ const response = await memoryService.updatememory(form)
           </div>
           <div>
             <label htmlFor="description" className="form-label">
-              <h4 className="mt-2">Description</h4>
+              <h4 className="mt-1">Description</h4>
             </label>
             <input
               type="text"
@@ -206,7 +214,7 @@ const response = await memoryService.updatememory(form)
           </div>
           <div className="mb-3">
             <label htmlFor="tag" className="form-label">
-              <h4 className="mt-2">Tag</h4>
+              <h4 className="mt-1">Tag</h4>
             </label>
             <input
               type="text"
@@ -218,10 +226,10 @@ const response = await memoryService.updatememory(form)
               required
             />
           </div>
-          <div className=" d-flex justify-content-center">
+          <div className=" d-flex justify-content-center mt-2">
             <button
               type="submit"
-              className="btn btn-lg btn-dark"
+              className="btn btn-lg btn-dark mt-2"
               style={{ backgroundColor: "rgb(109, 5, 29" }}
             >
               Add memory

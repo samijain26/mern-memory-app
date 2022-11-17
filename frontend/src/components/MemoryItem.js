@@ -3,7 +3,7 @@ import React from 'react'
 export default function MemoryItem({ memories, deleteMemory, updateCurrentmemory ,handleClick}) {
   return (
     <div className="col-md-3 ">
-      <div className="card my-3" style={{ height: "550px" }}>
+      <div className="card my-3" style={{ height: "520px" }}>
         <div className="card-body h-200">
           <div className=" h-200">
             <img
@@ -15,13 +15,13 @@ export default function MemoryItem({ memories, deleteMemory, updateCurrentmemory
           </div>
           <div className="d-flex align-items-left mt-3">
             <h4 className="card-title-info"> Title: </h4>
-            <p> {memories.title}</p>
+            <p>  {memories.title}</p>
           </div>
-          <div>
-            <h4 className="card-title-info "> Description: </h4>
+          <div >
+            <h4 className="card-title-info mt-2 "> Description: </h4>
             <p>{memories.description}</p>
           </div>
-          <div className="d-flex align-items-left mt-3">
+          <div className="d-flex align-items-left mt-2">
             <h4 className="card-text"> Tag: </h4>
             <p>{memories.tag}</p>
           </div>

@@ -2,37 +2,37 @@ import React from 'react'
 
 export default function Home() {
   return (
-    <div className="cards" style={{ maxwidth: "1000px", height: "800px" }}>
-      <>
-        {/* <div className="card d-flex mt-4" style={{ maxwidth: "25rem" }}> */}
-        <div
-          className="card-header d-flex justify-content-center "
-          style={{ maxwidth: "25rem" }}
-        >
-          <figure className="text-center  p-4 fs-3">
-            <blockquote className="blockquote fs-4  ">
-              <h1 className="card-title display-4 text-center mt-2 p-3  ">
-                Welcome to Memory app
-              </h1>
-              <p className="fst-italic mt-2">
-                We all have our time machines. Some takes us back,they are
-                called Memories. Some takes us forward, they are called Dreams
-              </p>
-            </blockquote>
-            <figcaption className="blockquote-footer">
-              <cite title="Source Title ">Jeremy Irons</cite>
-            </figcaption>
-          </figure>
-        </div>
-        <div className="card-body ">
-          <p className=" mb-5 text-bg-success bg-gradient px-4 py-4 fs-3">
-            Memory app is the place where you can create,organize,update or
-            delete a memory which is close to your heart. Simply register your
-            account today and start building your life time treasure.
-          </p>
-        </div>
-        {/* </div> */}
-      </>
+    <div >
+      <div className="cards">
+        <>
+          {/* <div className="card d-flex mt-4" style={{ maxwidth: "25rem" }}> */}
+          <div className="card-header d-flex justify-content-center ">
+            <figure className="text-center  p-4 fs-3">
+              <blockquote className="blockquote fs-4  ">
+                <h1 className="card-title display-5 text-center p-3  ">
+                  <br/>
+                  Welcome to Memory app
+                </h1>
+                <p className="fst-italic mt-3">
+                  We all have our time machines. Some takes us back, they are
+                  called Memories. Some takes us forward, they are called Dreams
+                </p>
+              </blockquote>
+              <figcaption className="blockquote-footer">
+                <cite title="Source Title ">Jeremy Irons</cite>
+              </figcaption>
+            </figure>
+          </div>
+          <div className="card-body ">
+            <p className=" mb-5 text-bg-secondary  px-4 py-4 fs-3">
+              Memory app is the place where you can create, organize, update or
+              delete a memory which is close to your heart. Simply register your
+              account today and start building your life time treasure.
+            </p>
+          </div>
+          {/* </div> */}
+        </>
+      </div>
     </div>
   );
 }

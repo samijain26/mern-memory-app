@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import authService from "../services/authService";
 import userService from "../services/userService";
-
+import { toast } from "react-toastify";
 function Register({ setUser }) {
   const navigate = useNavigate();
 
@@ -42,16 +42,18 @@ function Register({ setUser }) {
 
      
       setUser(info.data);
+      toast.success("You are successfully registered", { autoClose: 1000 });
       navigate("/memory");
     } catch (error) {
      
-      alert("username exists");
+      toast.error("username exists",{autoClose: 1000});
     }
   };
 
   return (
     <>
       <form className="col-lg-6 offset-lg-3 " onSubmit={handleSubmit}>
+        <br/><br/>
         <h1 className="pt-3 mt-4 row justify-content-center">
           <FaUser />
           Register

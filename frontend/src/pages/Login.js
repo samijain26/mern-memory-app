@@ -1,11 +1,11 @@
 import { useState } from "react";
-
+import {  toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { FaSignInAlt } from "react-icons/fa";
 import authService from "../services/authService"
 import userService from "../services/userService"
 
-function Login({ setUser }) {
+function Login({ setUser,showAlert }) {
   const navigate = useNavigate();
 
   let [form, setForm] = useState({
@@ -39,10 +39,17 @@ function Login({ setUser }) {
 
      
       setUser(info.data);
+      toast.success("login successful", { autoClose: 1000 , toastId: 'success1'});
       navigate("/memory");
+     
+      
     } catch (error) {
+      toast.error("invalid credential", {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 1000
+      });
       console.log(error.response.data.error);
-      alert(error.response.data.error);
+      
     }
   };
 
@@ -50,6 +57,7 @@ function Login({ setUser }) {
     <>
       <div>
         <form className="col-lg-6 offset-lg-3" onSubmit={handleSubmit}>
+          <br/><br/>
           <h1 className="pt-3 mt-4 row justify-content-center">
             <FaSignInAlt /> Login
           </h1>

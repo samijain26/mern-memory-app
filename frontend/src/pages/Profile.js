@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import userService from "../services/userService"
 import memoryService from "../services/memoryService"
-
+import { toast } from "react-toastify";
 export default function Profile({ username, email, password, setUser }) {
     
       const navigate = useNavigate();
@@ -39,9 +39,12 @@ export default function Profile({ username, email, password, setUser }) {
 
      const info =await userService.info()
 
-     console.log(response)
+      console.log(response)
+         toast("Information successfully updated", { autoClose: 2000 });
       setUser(info.data);
+    
       navigate("/profile");
+
     } catch (error) {
       console.log(error);
     //   alert(error?.response?.data?.error);
@@ -86,27 +89,30 @@ export default function Profile({ username, email, password, setUser }) {
     localStorage.removeItem("token");
     
     //  alert("You are successfully unsubscribed")
-     navigate("/");
+    navigate("/");
+     toast("you are successfully unsubscribed", { autoClose: 3000 });
    };
 
   return (
     <>
-      <div className="d-flex ">
+      <div className="d-flex offset-lg-4">
         <div className="mt-6">
-          <h1 className="mt-6">Welcome {username.toUpperCase()} </h1>
-          <h3 className="mt-3"> Your Email : {email}</h3>
+          <br />
+          <br /><br/>
+          <h2 className="mt-4 ">Welcome {username.toUpperCase()} </h2>
+          <h4 className="mt-3"> Your Email : {email}</h4>
         </div>
         {/* <i className="far fa-trash-alt mx-2" onClick={deleteUser}></i> */}
         {/* <i className="far fa-edit mx-2"></i> */}
       </div>
-      <div className="d-flex ">
-        <form className="col-lg-6 offset-lg-0" onSubmit={handleSubmit}>
-          <h1 className="mt-5">Update your information</h1>
+      <div className="d-flex offset-lg-4 ">
+        <form onSubmit={handleSubmit}>
+          <h2 className="mt-5">Update your information</h2>
           <div className="mt-3 d-flex align-items-evenly justify-content-left">
             <label htmlFor="username" className="form-label">
-              <h3 className="d-flex mt-3">
+              <h4 className="d-flex mt-3">
                 User name: {form.username.toUpperCase()}
-              </h3>
+              </h4>
             </label>
 
             {/* <input
@@ -120,7 +126,7 @@ export default function Profile({ username, email, password, setUser }) {
           </div>
           <div className="mt-2  ">
             <label htmlFor="email" className="form-label">
-              <h2> Email</h2>
+              <h4> Email</h4>
             </label>
             <br />
             <input
